@@ -85,7 +85,7 @@ public class ChargePolicyController {
             else if(status == 1){
                 model.put("chargePolicyCode", chargePolicy.getChargePolicyCode());
                 model.put("status", "saved");
-                return "views/chargepolicy/chargepolicysuccess";
+                return "views/chargepolicy/SuccessPage";
             }
 
         }
@@ -149,7 +149,7 @@ public class ChargePolicyController {
         chargePolicyService.deleteChargePolicy(chargePolicyCode);
         modelAndView.addObject("chargePolicyCode", chargePolicyCode);
         modelAndView.addObject("status","deleted");
-        modelAndView.setViewName("views/chargepolicy/chargepolicysuccess");
+        modelAndView.setViewName("views/chargepolicy/SuccessPage");
         return modelAndView;
     }
 
@@ -178,7 +178,7 @@ public class ChargePolicyController {
         this.chargePolicyService.updateEntry(chargePolicy,chargePolicyCode);
         modelAndView.addObject("status", "edited");
         modelAndView.addObject("chargePolicyCode", chargePolicyCode);
-        modelAndView.setViewName("views/chargepolicy/chargepolicysuccess");
+        modelAndView.setViewName("views/chargepolicy/SuccessPage");
         return modelAndView;
     }
 

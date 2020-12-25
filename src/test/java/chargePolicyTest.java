@@ -30,6 +30,7 @@ public class chargePolicyTest {
     @Test
     public void getChargeCodeNameTest() {
         assertNull(chargePolicyService.getChargeCodeName(""));
+
     }
     @Test
     public void updateStatusTest() {
