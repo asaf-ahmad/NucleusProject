@@ -2,8 +2,11 @@ package com.nucleus.loanapplications.model;
 
 import com.nucleus.customer.model.Customer;
 import com.nucleus.product.model.Product;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -12,11 +15,12 @@ public class LoanApplications {
 
     @Id
     @Column(name = "loan_application_number")
-   /* @GeneratedValue(strategy=GenerationType.AUTO)*/
+    @NotNull( message = "Enter a valid Loan Application number")
+    /* @GeneratedValue(strategy=GenerationType.AUTO)*/
     private Integer loanApplicationNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_code", referencedColumnName = "customer_code",nullable = false)
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "customer_code", referencedColumnName = "customer_code", nullable = false)
     private Customer customerCode;
 
     public Customer getCustomerCode() {
@@ -34,18 +38,24 @@ public class LoanApplications {
     private Product productCode;
 
     @Column(name = "loan_amount_requested",nullable = false)
+    @NotNull(message = "Enter a valid Loan amount")
     private Integer loanAmountRequested;
 
     @Column(name = "tenure",nullable = false)
+    @NotNull(message = "Please enter a positive number")
+    @Min(value = 1)
     private Integer tenure;
 
     @Column(name = "rate",nullable = false)
-    private Double rate;
+    @NotNull(message = "Please enter a positive number")
+    private double rate;
 
     @Column(name = "agreement_date",nullable = false)
+    @NotNull(message = "Please Enter A Date")
     private LocalDate agreementDate;
 
     @Column(name = "installment_due_date",nullable = false)
+    @NotNull(message = "Please Enter A Date")
     private LocalDate installmentDueDate;
 
     @Column(name = "create_date")
@@ -97,11 +107,11 @@ public class LoanApplications {
         this.tenure = tenure;
     }
 
-    public Double getRate() {
+    public double getRate() {
         return rate;
     }
 
-    public void setRate(Double rate) {
+    public void setRate(double rate) {
         this.rate = rate;
     }
 
@@ -179,5 +189,16 @@ public class LoanApplications {
 
     public void setLoanAmountRequested(Integer loanAmountRequested) {
         this.loanAmountRequested = loanAmountRequested;
+    }
+
+    @Transient
+    private String productType;
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
 }

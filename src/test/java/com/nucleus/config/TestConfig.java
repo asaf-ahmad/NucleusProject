@@ -57,10 +57,25 @@ public class TestConfig {
     public BasicDataSource getDataSource(){
         BasicDataSource ds = new BasicDataSource();
         ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+<<<<<<< HEAD:src/test/java/com/nucleus/config/TestConfig.java
         ds.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
         ds.setUsername("c##asaf");
         ds.setPassword("asaf");
+=======
+//        ds.setUrl("jdbc:oracle:thin:@localhost:1521:ORCLCDB");
+//        ds.setUsername("c##username");
+//        ds.setPassword("pwd");
+//        ds.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
+//        ds.setUsername("sys as sysdba");
+//        ds.setPassword("gyanesh10");
+>>>>>>> edb9e6769e3225898d3920eb4c021915701acdf7:src/main/java/com/nucleus/config/TestConfig.java
 
+//        ds.setUrl("jdbc:oracle:thin:@localhost:1521/pdborcl");
+//        ds.setUsername("nsbt");
+//        ds.setPassword("qwerty");
+//        ds.setUrl("jdbc:oracle:thin:@localhost:1521/xepdb1");
+//        ds.setUsername("MYUSERNAME");
+//        ds.setPassword("MYPASSWORD");
         return ds;
 
     }
